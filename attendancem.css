@@ -1,0 +1,40 @@
+
+body{
+  background-image: url(mmmm.jpg);
+  margin:0;
+  padding:0;
+  background-size: cover;
+  font-family: Arial;
+}
+
+.btn{
+  border-radius: 20px;
+  border: none;
+}
+.first_row{
+  margin-top: 350px;
+}
+.first_column{
+  margin-top: 150px;
+}
+.card{
+  width: 500px;
+  background: #fff3e2;
+  border-color: rgba(0, 102, 99, 1);
+  border-width: 10px;
+  border-radius: 70px;
+}
+.register{
+  margin-bottom: 40px;
+}
+img{
+  opacity: 0.5;
+}
+.overall{
+  position:absolute;
+  top:80%;
+  left:60%;
+  transform: translate(-80%,-90%);
+  padding: 80px 40px;
+  box-sizing: border-box;
+}

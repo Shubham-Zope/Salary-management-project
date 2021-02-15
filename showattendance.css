@@ -1,0 +1,72 @@
+body{
+  background: url(bgImage7.jpg);
+  margin:0;
+  padding:0;
+  background-size: cover;
+
+}
+.heading h2{
+  font-size: 30px;
+}
+body {
+	  font-family: 'Montserrat', sans-serif;
+	  font-weight: bold;
+}
+.container{
+  background-color: white;
+}
+.btnleave button{
+  background-color: blue;
+  margin: 1%;
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #008ae6;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 50px;
+}
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: white;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 30px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.tab{
+  width: 100%;
+  background-color: #f1f1c1;
+}
+.tab tr:nth-child(even) {
+  background-color: #eee;
+}
+.tab tr:nth-child(odd) {
+  background-color: #fff;
+}
+..tab th {
+  color: white;
+  background-color: black;
+}

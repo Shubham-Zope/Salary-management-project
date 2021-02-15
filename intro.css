@@ -1,0 +1,82 @@
+body{
+  margin:0;
+  padding:0;
+  background: url(backimageintro.jpg) no-repeat;
+  background-position: top bottom;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: hidden;
+  font-family: Arial;
+  height: 100%;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.intro{
+  position: absolute;
+  top:50%;
+  left:80%;
+  transform: translate(-50%,-50%);
+  height: 400px;
+  width: 350px;
+  padding: 80px 40px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.31);
+  -webkit-box-shadow: 2px 3px 25px 14px #000000;
+  box-shadow: 2px 3px 25px 14px #000000;
+}
+
+.intro:hover{
+  background-color: rgba(255, 255, 255, 0.48);
+}
+
+h3{
+  margin: 0;
+  padding: 0 0 20px;
+  color: red;
+  font-size: 22px;
+  text-align: center;
+}
+
+.management input[type="submit"]
+{
+  border: none;
+  outline: none;
+  height: 40px;
+  width:150px;
+  color: black;
+  font-size: 16px;
+  background: rgb(0, 255, 255);
+  border-radius: 20px;
+  margin-top: -10px;
+  margin-left: 60px;
+
+}
+
+.employ input[type="submit"]
+{
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 150px;
+  color: black;
+  margin-top: -55px;
+  font-size: 16px;
+  background: rgb(0, 255, 255);
+  border-radius: 20px;
+  margin-left: 60px;
+}
+
+.management input[type="submit"]:hover{
+  background: #d6ffff;
+  color: blue;
+}
+
+.employ input[type="submit"]:hover{
+  background: #d6ffff;
+  color: blue;
+  }

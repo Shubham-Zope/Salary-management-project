@@ -1,0 +1,92 @@
+body{
+  background-image: url(bgImage7.jpg);
+  margin:0;
+  padding:0;
+  background-size: cover;
+  font-family: Arial;
+}
+body {
+	  font-family: 'Montserrat', sans-serif;
+	  font-weight: bold;
+}
+.container{
+  position:absolute;
+  top:80%;
+  left:90%;
+  transform: translate(-80%,-90%);
+  height: 450px;
+  width: 150px;
+  padding: 80px 40px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.31);
+}
+.heading h2{
+  font-size: 50px;
+  color: black;
+  top:80%;
+  left: 4.5%;
+  transform: translate(4.5%,80%);
+}
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #1d2d50;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 50px;
+}
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #2ec1ac;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: white;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 30px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.para{
+  position:absolute;
+  top:30%;
+  left:30%;
+  font-size: 17px;
+  height: 50%;
+  width: 50%;
+  padding: 80px 40px;
+  box-sizing: border-box;
+  border-radius: 50px;
+  background: #fff3e2;
+}
+
+span{
+  color: white;
+}
+
+.side{
+  margin-left: 2%;
+  margin-top: 1%;
+  color: black;
+}

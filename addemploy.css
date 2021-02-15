@@ -1,0 +1,24 @@
+body{
+  background-image: url(form.jpg);
+  margin:0;
+  padding:0;
+  background-size: cover;
+  font-family: Arial;
+}
+.heading h2{
+  color: red;
+  font-size: 30px;
+  top: 80%;
+  transform: translate(0%,80%);
+}
+.container{
+  position:absolute;
+  top:55%;
+  left:40%;
+  transform: translate(-40%,-55%);
+  height: 100%;
+  width: 85%;
+  padding: 80px 40px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.4);
+}
