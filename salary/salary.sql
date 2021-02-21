@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2021 at 02:58 PM
+-- Generation Time: Feb 21, 2021 at 05:27 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -300,6 +300,34 @@ INSERT INTO `attendance` (`attendance_ID`, `number`, `addemploy_Employ_ID`) VALU
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `leave`
+--
+
+CREATE TABLE `leave` (
+  `leave_id` int(11) NOT NULL,
+  `sickleave` int(11) DEFAULT NULL,
+  `earnleave` int(11) DEFAULT NULL,
+  `casualleave` int(11) DEFAULT NULL,
+  `nationalfesholiday` int(11) DEFAULT NULL,
+  `paidleave` int(11) DEFAULT NULL,
+  `leavereason` text DEFAULT NULL,
+  `leaveapproval` varchar(50) DEFAULT 'Pending approval'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `leave`
+--
+
+INSERT INTO `leave` (`leave_id`, `sickleave`, `earnleave`, `casualleave`, `nationalfesholiday`, `paidleave`, `leavereason`, `leaveapproval`) VALUES
+(1, 2, 1, 1, 1, 1, 'KKK', 'Pending approval'),
+(4, 2, 1, 1, 1, 1, NULL, 'Pending approval'),
+(21, 2, 1, 1, 1, 1, NULL, 'Pending approval'),
+(22, 2, 1, 1, 1, 1, NULL, 'Pending approval'),
+(36, 1, 1, 1, 1, 1, NULL, 'Pending approval');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `leave_app`
 --
 
@@ -320,7 +348,7 @@ INSERT INTO `leave_app` (`leave_id`, `name`, `email`, `leave_days`, `leave_reaso
 (1, 'test4', 't4@g.com', 2, 'Ill due to corona', 'Leave Rejected'),
 (2, 'Shubham', 'sz@g.com', 2, 'Ill due to corona', 'Approved'),
 (3, 'Mayur Baswaraj Pitre', 'mp@g.com', 3, 'Ill due to pneumonia', 'Leave Approved'),
-(4, 'Prithvi Yadav', 'pk@g.com', 3, 'Going to Thailand', 'Reject'),
+(4, 'Prithvi Yadav', 'pk@g.com', 3, 'Going to Thailand', 'Approved'),
 (5, 'Karan Sharma', 'ks@g.com', 0, 'Ill due to corona', 'Pending Approval'),
 (6, 'Ajay', 'ajaynair@g.com', 5, 'festival', 'Pending Approval'),
 (7, 'Joe Aden', 'joeaden@g.com', 2, 'Ill due to corona', 'Approved'),
@@ -407,14 +435,14 @@ INSERT INTO `leave_app` (`leave_id`, `name`, `email`, `leave_days`, `leave_reaso
 (88, 'Bhavishya Khan', 'bhavishyak@g.com', 6, 'going out of town', 'Pending Approval'),
 (89, 'Sahil Deshmukh', 'sahild@g.com', 1, 'Ill due to corona', 'Pending Approval'),
 (90, 'Madhav Bhutada', 'madhavb@g.com', 2, 'going out of town', 'Pending Approval'),
-(91, 'Prithvi', 'pk@g.com', 2, 'Ill', 'Reject'),
-(92, 'Prithvi Yadav', 'pk@g.com', 3, 'Festival', 'Reject'),
+(91, 'Prithvi', 'pk@g.com', 2, 'Ill', 'Approved'),
+(92, 'Prithvi Yadav', 'pk@g.com', 3, 'Festival', 'Approved'),
 (93, 'Prithvi', 'prithviyadav@g.com', 2, 'Ill', 'Pending Approval'),
-(94, 'Prithvi Yadav', 'pk@g.com', 2, 'Ill please give leave', 'Reject'),
+(94, 'Prithvi Yadav', 'pk@g.com', 2, 'Ill please give leave', 'Approved'),
 (95, 'Joe', 'joeaden@g.com', 2, 'Ill', 'Approved'),
 (96, 'Shubham Zope', 'sz@g.com', 2, 'Festival celebration', 'Approved'),
 (97, 'Karan Sharma', 'ks@g.com', 2, 'Festival', 'Pending Approval'),
-(98, 'Prithvi Yadav', 'pk@g.com', 2, 'Festival celebration from 6/10/2020 to 9/10/2020', 'Reject');
+(98, 'Prithvi Yadav', 'pk@g.com', 2, 'Festival celebration from 6/10/2020 to 9/10/2020', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -528,7 +556,8 @@ INSERT INTO `salary` (`salary_ID`, `b_salary`, `hra`, `lta`, `ca`, `da`, `md`, `
 (203, '500000', '1000', '2000', '3000', '1000', '1000', '200', '508200', '200', '1000', '2000', '2', '200', '504800', 1, '6/4/2010', '7/5/2010'),
 (206, '300000', '1000', '1000', '2000', '2000', '1000', '2000', '309000', '1000', '100', '200', '1', '100', '307600', 16, '1/1/2002', '3/2/2002'),
 (207, '200000', '1000', '2000', '2000', '100', '1000', '1000', '207100', '1200', '2000', '1000', '1', '100', '202800', 23, '6/4/2010', '7/5/2010'),
-(208, '200000', '1000', '2000', '1000', '2000', '1000', '1500', '208500', '2000', '1000', '3000', '1', '100', '202400', 131, '5/2/2020', '6/3/2020');
+(208, '200000', '1000', '2000', '1000', '2000', '1000', '1500', '208500', '2000', '1000', '3000', '1', '100', '202400', 131, '5/2/2020', '6/3/2020'),
+(209, '52000', '10000', '2500', '20000', '3000', '1000', '2000', '90500', '100', '500', '300', '2', '200', '89400', 126, '1/1/2002', '3/2/2002');
 
 --
 -- Indexes for dumped tables
@@ -546,6 +575,12 @@ ALTER TABLE `addemploy`
 ALTER TABLE `attendance`
   ADD PRIMARY KEY (`attendance_ID`),
   ADD KEY `fk_attendance_addemploy_idx` (`addemploy_Employ_ID`);
+
+--
+-- Indexes for table `leave`
+--
+ALTER TABLE `leave`
+  ADD PRIMARY KEY (`leave_id`);
 
 --
 -- Indexes for table `leave_app`
@@ -568,13 +603,19 @@ ALTER TABLE `salary`
 -- AUTO_INCREMENT for table `addemploy`
 --
 ALTER TABLE `addemploy`
-  MODIFY `Employ_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `Employ_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `attendance_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `attendance_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+
+--
+-- AUTO_INCREMENT for table `leave`
+--
+ALTER TABLE `leave`
+  MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `leave_app`
@@ -586,7 +627,7 @@ ALTER TABLE `leave_app`
 -- AUTO_INCREMENT for table `salary`
 --
 ALTER TABLE `salary`
-  MODIFY `salary_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `salary_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
 
 --
 -- Constraints for dumped tables
@@ -597,6 +638,12 @@ ALTER TABLE `salary`
 --
 ALTER TABLE `attendance`
   ADD CONSTRAINT `fk_attendance_addemploy` FOREIGN KEY (`addemploy_Employ_ID`) REFERENCES `addemploy` (`Employ_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `leave`
+--
+ALTER TABLE `leave`
+  ADD CONSTRAINT `fk_leave` FOREIGN KEY (`leave_id`) REFERENCES `addemploy` (`Employ_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `salary`

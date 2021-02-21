@@ -1,0 +1,5 @@
+$sql = "SELECT `addemploy`.*, `leave`.*\n"
+
+    . "FROM `addemploy` \n"
+
+    . "	LEFT JOIN `leave` ON `leave`.`leave_id` = `addemploy`.`Employ_ID`";

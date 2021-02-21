@@ -28,6 +28,7 @@ if ( isset($_SESSION['success']) ) {
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="viewdetails.php">View employ</a>
     <a href="leave.php">Leave Application</a>
+	<a href="leaveremain.php">Leave Details</a>
     <a href="logout.php">Logout</a>
   </div>
   <div class="side">

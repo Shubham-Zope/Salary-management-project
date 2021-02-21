@@ -11,9 +11,10 @@ form{
 	margin-left: 16%;
 	padding: 1%;
 }
-.reason label,button,span{
+.reason label,span{
 	margin-left: 0.5%;
 	padding: 1%;
+	width: 25%;
 }
 .reason textarea{
 	margin-left: 1%;
@@ -21,26 +22,49 @@ form{
 .email label,span{
 	margin-left: 0.5%;
 	padding: 1%;
+	width: 8%;
 }
 .email input{
 	margin-left: 15%;
 	padding: 1%;
 }
-.l_d label,span{
-	margin-left: 0.5%;
+.l_d input{
+	width: 100px;
+   margin-left: 0.5%;
+   margin-right: 50px;
 	padding: 1%;
 }
-.l_d input{
-	margin-left: 5%;
-	padding: 1%;
+.alreadytaken p{
+	margin-left: 0.5%;
+	padding: 1.5%;
+}
+.alreadytaken label{
+	width: 10%;
+	margin-left: 2%;
+
+}
+.tobetaken p{
+	margin-left: 0.5%;
+	padding: 1.5%;
+}
+
+.tobetaken label{
+	width: 10%;
+	margin-left: 2%;
 }
 .approve label,span{
 	margin-left: 0.5%;
 	padding: 1%;
+	width: 15%;
 }
 .approve input{
 	margin-left: 11%;
 	padding: 1%;
+}
+.leavebtn button{
+	margin-left: 30%;
+	padding: 1%;
+	width: 15%;
 }
 div{
 	display: inline;
@@ -73,7 +97,7 @@ body {
 .overall{
 	position:absolute;
   margin: 5%;
-  height: 130%;
+  height: 140%;
   width: 90%;
   padding: 80px 40px;
   box-sizing: border-box;
@@ -89,7 +113,14 @@ body {
 body {
   font-family: "Lato", sans-serif;
 }
-
+.side{
+  margin-left: 2%;
+  margin-top: 1%;
+  color: black;
+}
+span{
+  color: white;
+}
 .sidenav {
   height: 100%;
   width: 0;
