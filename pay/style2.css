@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+form{
+	padding: 3%;
+}
+label,input,button{
+	margin: 1%;
+}
+h1{
+	text-align: center;
+}
