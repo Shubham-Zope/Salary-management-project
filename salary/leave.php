@@ -22,18 +22,54 @@ if (strlen($_POST['sickleave']) < 1 || strlen($_POST['casualleave']) < 1 || strl
         header("Location: leave.php");
         return;
     }
-
-  $sql = "INSERT INTO `leave_app`( `name`, `email`, `leave_days`, `leave_reason`) VALUES (:name,:email,:leave_days,:leave_reason)";
+  if($_POST['leavet'] === 'sick-leave'){
+	  $sql = "UPDATE `leave` SET `sickleave` = :sl, `leavereason` = :lr WHERE `leave`.`leave_id` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
-        ':name' => $_POST['name'],
-        ':email' => $_POST['email'],
-        ':leave_days' => $_POST['leave_days'],
-        ':leave_reason' => $_POST['leave_reason'],
+        ':sl' => $_POST['levea'],
+        ':lr' => $_POST['leavereason'],
+		':xyza' => $_SESSION['user_id']
       ));
     $_SESSION['success'] = 'Leave submitted !!';
     header( 'Location: viewdetails.php' ) ;
     return;
+  }
+  if($_POST['leavet'] === 'earn-leave'){
+	  $sql = "UPDATE `leave` SET `earnleave` = :el, `leavereason` = :lr WHERE `leave`.`leave_id` = :xyza";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':el' => $_POST['levea'],
+        ':lr' => $_POST['leavereason'],
+		':xyza' => $_SESSION['user_id']
+      ));
+    $_SESSION['success'] = 'Leave submitted !!';
+    header( 'Location: viewdetails.php' ) ;
+    return;
+  }
+  if($_POST['leavet'] === 'paid-leave'){
+	  $sql = "UPDATE `leave` SET `paidleave` = :pl, `leavereason` = :lr WHERE `leave`.`leave_id` = :xyza";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':pl' => $_POST['levea'],
+        ':lr' => $_POST['leavereason'],
+		':xyza' => $_SESSION['user_id']
+      ));
+    $_SESSION['success'] = 'Leave submitted !!';
+    header( 'Location: viewdetails.php' ) ;
+    return;
+  }
+  if($_POST['leavet'] === 'casual-leave'){
+	  $sql = "UPDATE `leave` SET `casualleave` = :cl, `leavereason` = :lr WHERE `leave`.`leave_id` = :xyza";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':cl' => $_POST['levea'],
+        ':lr' => $_POST['leavereason'],
+		':xyza' => $_SESSION['user_id']
+      ));
+    $_SESSION['success'] = 'Leave submitted !!';
+    header( 'Location: viewdetails.php' ) ;
+    return;
+  }
 }
 
 // Flash pattern
@@ -45,7 +81,7 @@ $stmt = $pdo->prepare("SELECT `addemploy`.*, `leave`.*\n"
 
     . "FROM `addemploy` \n"
 
-    . "	LEFT JOIN `leave` ON `leave`.`leave_id` = :xyz");
+    . "	LEFT JOIN `leave` ON `leave`.`leave_id` = `addemploy`.`Employ_ID` WHERE `leave`.`leave_id` = :xyz");
 $stmt->execute(array(":xyz" => $_SESSION['user_id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if ( $row === false ) {
@@ -131,17 +167,22 @@ function closeNav() {
 	  <p>Leave to be taken</p>
 	  <br>
       <div class="l_d" style="display: inline;">
-        <label for="leave_days">Sick leave :<span class="required">*</span></label><input type="number" name="sick-leave"  >
+        <label for="leave_days">Sick leave :<span>*</span></label><input type="radio" name="leavet" value="sick-leave">
       </div>
 		<div class="l_d" style="display: inline;">
-        <label for="leave_days">Earned leave :<span class="required">*</span></label><input type="number" name="earn-leave"  >
+        <label for="leave_days">Earned leave :<span>*</span></label><input type="radio" name="leavet" value="earn-leave"">
       </div>
 			<div class="l_d" style="display: inline;">
-        <label for="leave_days">Casual leave :<span class="required">*</span></label><input type="number" name="casual-leave" >
+        <label for="leave_days">Casual leave :<span>*</span></label><input type="radio" name="leavet" value="casual-leave">
       </div>
 			<div class="l_d" style="display: inline;">
-        <label for="leave_days">Paid leave :<span class="required">*</span></label><input type="number" name="paid-leave" >
+        <label for="leave_days">Paid leave :<span>*</span></label><input type="radio" name="leavet" value="paid-leave">
       </div>
+	  <br><br>
+	  <div class="l_d">
+	  <label>Please enter your leaves</label>
+	  <input type="number" name="levea">
+	  </div>
 			<br><br><br>
 		 </div>			 
       <div class="reason">
@@ -155,7 +196,7 @@ function closeNav() {
 			<div class="leavebtn">
 			<button  class="submit" >Request leave</button>
 			</div>
-			<div class="leavebtn">
+			<div class="cancelleave">
 			<button type="submit" name="submit" class="cancel" >Cancel</button>
 			</div>
   	</form>

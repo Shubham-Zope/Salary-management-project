@@ -22,7 +22,7 @@ $stmt = $pdo->prepare("SELECT `addemploy`.*, `leave`.*\n"
 
     . "FROM `addemploy` \n"
 
-    . "	LEFT JOIN `leave` ON `leave`.`leave_id` = :xyz");
+    . "	LEFT JOIN `leave` ON `leave`.`leave_id` = `addemploy`.`Employ_ID` WHERE `leave`.`leave_id` = :xyz");
 $stmt->execute(array(":xyz" => $_SESSION['user_id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if ( $row === false ) {
@@ -88,10 +88,8 @@ $la = htmlentities($row['leaveapproval']);
           <th>First name:</th>
           <td><?= $fn ?></td>
         </tr>
-        <tr>
-          <th>Middle name:</th>
-          <td><?= $mn ?></td>
-        </tr>
+       
+       
         <tr>
           <th>Last name:</th>
           <td><?= $ln ?></td>

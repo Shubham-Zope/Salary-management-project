@@ -66,6 +66,10 @@ form{
 	padding: 1%;
 	width: 15%;
 }
+.cancelleave button{
+	padding: 1%;
+	width: 15%;
+}
 div{
 	display: inline;
 }
