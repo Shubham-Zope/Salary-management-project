@@ -52,23 +52,33 @@ if ( isset($_SESSION['success']) ) {
     <br><br><br>
     <div class="container">
       <?php  echo('<table class="table table-hover">'."\n");
-    $stmt = $pdo->query("SELECT `addemploy`.*, `leave_app`.* FROM `addemploy` INNER JOIN `leave_app` ON `leave_app`.`email` = `addemploy`.`email`");
+    $stmt = $pdo->query("SELECT `addemploy`.*, `leave`.*\n"
+
+    . "FROM `addemploy` \n"
+
+    . "	LEFT JOIN `leave` ON `leave`.`leave_id` = `addemploy`.`Employ_ID`\n"
+
+    . "WHERE `leave`.`reqleave` IS NOT NULL");
     while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
 
         echo "<tr><td><li>";
-        echo(htmlentities($row['name']));
+        echo(htmlentities($row['fname']));
+        echo(" ");
+		echo(htmlentities($row['lname']));
         echo("</td><td>");
         echo(htmlentities($row['email']));
         echo("</td><td>");
-        echo(htmlentities($row['leave_days']));
+        echo(htmlentities($row['reqleave']));
+		echo(" ");
+		echo(htmlentities($row['leavetype']));
         echo("</td></tr>");
         echo "<tr><td>";
-        echo(htmlentities($row['leave_reason']));
+        echo(htmlentities($row['leavereason']));
         echo("</td></tr>");
         echo "<tr><td>";
-        echo(htmlentities($row['leave_approval']));
+        echo(htmlentities($row['leaveapproval']));
         echo("</td><td>");
-        echo('<a href="leavem1.php?email='.$row['email'].'">Edit Leave Status</a>');
+        echo('<a href="leavem1.php?id='.$row['Employ_ID'].'">Edit Leave Status</a>');
         echo("</li></td></tr>\n");
         echo("<tr><td>************************************************************************************</td></tr>\n");
     }

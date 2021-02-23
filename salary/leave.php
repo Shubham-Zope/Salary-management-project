@@ -22,48 +22,42 @@ if (strlen($_POST['sickleave']) < 1 || strlen($_POST['casualleave']) < 1 || strl
         header("Location: leave.php");
         return;
     }
-  if($_POST['leavet'] === 'sick-leave'){
-	  $sql = "UPDATE `leave` SET `sickleave` = :sl, `leavereason` = :lr WHERE `leave`.`leave_id` = :xyza";
+  if($_POST['leavet'] === 'sickleave'){
+	$sql = "UPDATE `leave` SET `reqleave` = :sl,`leavetype` = :ty, `leavereason` = :lr, `leaveapproval`=:la WHERE `leave`.`leave_id` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
-        ':sl' => $_POST['levea'],
+        ':sl' =>  $_POST['levea'],
         ':lr' => $_POST['leavereason'],
+		':la' => $_POST['leaveapproval'],
+		':ty' => $_POST['leavet'],
 		':xyza' => $_SESSION['user_id']
       ));
     $_SESSION['success'] = 'Leave submitted !!';
     header( 'Location: viewdetails.php' ) ;
     return;
   }
-  if($_POST['leavet'] === 'earn-leave'){
-	  $sql = "UPDATE `leave` SET `earnleave` = :el, `leavereason` = :lr WHERE `leave`.`leave_id` = :xyza";
+  if($_POST['leavet'] === 'earnleave'){
+	  $sql = "UPDATE `leave` SET `reqleave` = :el,`leavetype` = :ty, `leaveapproval`=:la, `leavereason` = :lr WHERE `leave`.`leave_id` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
-        ':el' => $_POST['levea'],
+        ':el' => $slle + $_POST['levea'],
         ':lr' => $_POST['leavereason'],
+		':la' => $_POST['leaveapproval'],
+		':ty' => $_POST['leavet'],
 		':xyza' => $_SESSION['user_id']
       ));
     $_SESSION['success'] = 'Leave submitted !!';
     header( 'Location: viewdetails.php' ) ;
     return;
   }
-  if($_POST['leavet'] === 'paid-leave'){
-	  $sql = "UPDATE `leave` SET `paidleave` = :pl, `leavereason` = :lr WHERE `leave`.`leave_id` = :xyza";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(array(
-        ':pl' => $_POST['levea'],
-        ':lr' => $_POST['leavereason'],
-		':xyza' => $_SESSION['user_id']
-      ));
-    $_SESSION['success'] = 'Leave submitted !!';
-    header( 'Location: viewdetails.php' ) ;
-    return;
-  }
-  if($_POST['leavet'] === 'casual-leave'){
-	  $sql = "UPDATE `leave` SET `casualleave` = :cl, `leavereason` = :lr WHERE `leave`.`leave_id` = :xyza";
+  if($_POST['leavet'] === 'casualleave'){
+	  $sql = "UPDATE `leave` SET `reqleave` = :cl,`leavetype` = :ty, `leaveapproval`=:la, `leavereason` = :lr WHERE `leave`.`leave_id` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':cl' => $_POST['levea'],
         ':lr' => $_POST['leavereason'],
+		':la' => $_POST['leaveapproval'],
+		':ty' => $_POST['leavet'],
 		':xyza' => $_SESSION['user_id']
       ));
     $_SESSION['success'] = 'Leave submitted !!';
@@ -96,7 +90,7 @@ if ( isset($_SESSION['error']) ) {
     unset($_SESSION['error']);
 }
 
-$la = htmlentities($row['leaveapproval']);
+$la = 'Pending approval';
 $n = htmlentities($row['fname']);
 $sl = htmlentities($row['sickleave']);
 $cl = htmlentities($row['casualleave']);
@@ -149,16 +143,16 @@ function closeNav() {
 	  <p>Leave already taken</p>
 	  <br>
       <div class="l_d" style="display: inline;">
-        <label for="leave_days">Sick leave :<span class="required">*</span></label><input type="number" name="sickleave" value="<?= $sl ?>" readonly>
+        <label for="leave_days">Sick leave :<span>*</span></label><input type="number" name="sickleave" value="<?= $sl ?>" readonly>
       </div>
 		<div class="l_d" style="display: inline;">
-        <label for="leave_days">Earned leave :<span class="required">*</span></label><input type="number" name="earnleave" value="<?= $el ?>" readonly>
+        <label for="leave_days">Earned leave :<span>*</span></label><input type="number" name="earnleave" value="<?= $el ?>" readonly>
       </div>
 			<div class="l_d" style="display: inline;">
-        <label for="leave_days">Casual leave :<span class="required">*</span></label><input type="number" name="casualleave" value="<?= $cl ?>" readonly>
+        <label for="leave_days">Casual leave :<span>*</span></label><input type="number" name="casualleave" value="<?= $cl ?>" readonly>
       </div>
 			<div class="l_d" style="display: inline;">
-        <label for="leave_days">Paid leave :<span class="required">*</span></label><input type="number" name="paidleave" value="<?= $pl ?>" readonly>
+        <label for="leave_days">Paid leave :<span>*</span></label><input type="number" name="paidleave" value="<?= $pl ?>" readonly>
       </div>
 			<br>
 		 </div>
@@ -167,20 +161,17 @@ function closeNav() {
 	  <p>Leave to be taken</p>
 	  <br>
       <div class="l_d" style="display: inline;">
-        <label for="leave_days">Sick leave :<span>*</span></label><input type="radio" name="leavet" value="sick-leave">
+        <label for="leave_days">Sick leave :<span>*</span></label><input type="radio" name="leavet" value="sickleave">
       </div>
 		<div class="l_d" style="display: inline;">
-        <label for="leave_days">Earned leave :<span>*</span></label><input type="radio" name="leavet" value="earn-leave"">
+        <label for="leave_days">Earned leave :<span>*</span></label><input type="radio" name="leavet" value="earnleave"">
       </div>
 			<div class="l_d" style="display: inline;">
-        <label for="leave_days">Casual leave :<span>*</span></label><input type="radio" name="leavet" value="casual-leave">
-      </div>
-			<div class="l_d" style="display: inline;">
-        <label for="leave_days">Paid leave :<span>*</span></label><input type="radio" name="leavet" value="paid-leave">
+        <label for="leave_days">Casual leave :<span>*</span></label><input type="radio" name="leavet" value="casualleave">
       </div>
 	  <br><br>
 	  <div class="l_d">
-	  <label>Please enter your leaves</label>
+	  <label>Please enter your leaves*<span class="required"></span></label>
 	  <input type="number" name="levea">
 	  </div>
 			<br><br><br>

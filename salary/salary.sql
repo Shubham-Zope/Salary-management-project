@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2021 at 05:27 PM
+-- Generation Time: Feb 23, 2021 at 05:51 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -311,19 +311,21 @@ CREATE TABLE `leave` (
   `nationalfesholiday` int(11) DEFAULT NULL,
   `paidleave` int(11) DEFAULT NULL,
   `leavereason` text DEFAULT NULL,
-  `leaveapproval` varchar(50) DEFAULT 'Pending approval'
+  `leaveapproval` varchar(50) DEFAULT 'Pending approval',
+  `leavetype` varchar(50) DEFAULT NULL,
+  `reqleave` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `leave`
 --
 
-INSERT INTO `leave` (`leave_id`, `sickleave`, `earnleave`, `casualleave`, `nationalfesholiday`, `paidleave`, `leavereason`, `leaveapproval`) VALUES
-(1, 2, 1, 1, 1, 1, 'KKK', 'Pending approval'),
-(4, 2, 1, 1, 1, 1, NULL, 'Pending approval'),
-(21, 2, 1, 1, 1, 1, NULL, 'Pending approval'),
-(22, 2, 1, 1, 1, 1, NULL, 'Pending approval'),
-(36, 1, 1, 1, 1, 1, NULL, 'Pending approval');
+INSERT INTO `leave` (`leave_id`, `sickleave`, `earnleave`, `casualleave`, `nationalfesholiday`, `paidleave`, `leavereason`, `leaveapproval`, `leavetype`, `reqleave`) VALUES
+(1, 15, 15, 15, 1, 5, 'e', 'Accepted', 'casualleave', 1),
+(4, 3, 1, 1, 1, 1, 'dd', 'Accepted', 'sickleave', 2),
+(21, 2, 1, 1, 1, 1, NULL, 'Pending approval', NULL, NULL),
+(22, 2, 1, 1, 1, 1, NULL, 'Pending approval', NULL, NULL),
+(36, 15, 10, 15, 1, 3, 'OK', 'Accepted', 'casualleave', 3);
 
 -- --------------------------------------------------------
 
@@ -366,7 +368,7 @@ INSERT INTO `leave_app` (`leave_id`, `name`, `email`, `leave_days`, `leave_reaso
 (19, 'Keyur Kulkarni', 'keyurkulkarni@g.com', 2, 'Diwali Festival', 'Pending Approval'),
 (20, 'Gaurang Joshi', 'gaurangjoshi@g.com', 3, 'Stomachache admit in hospital', 'Pending Approval'),
 (21, 'Sujit Zope', 'sujitzope@g.com', 2, 'Diwali Festival', 'Pending Approval'),
-(22, 'Chris Moris', 'chrismoris@g.com', 1, 'Ill due to corona', 'Pending Approval'),
+(22, 'Chris Moris', 'chrismoris@g.com', 1, 'Ill due to corona', 'Pending approval'),
 (23, 'Vasant Singh', 'vasantsingh@g.com', 0, 'Ill due to headache', 'Pending Approval'),
 (24, 'Hemant Talreja', 'hemanttalreja@g.com', 1, 'Diwali Festival', 'Pending Approval'),
 (25, 'Prathama Badhe', 'prathamabadhe@g.com', 2, 'Diwali Festival', 'Pending Approval'),

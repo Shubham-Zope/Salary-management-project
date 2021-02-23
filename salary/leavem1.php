@@ -25,28 +25,119 @@ if (strlen($_POST['name']) < 1 || strlen($_POST['email']) < 1 || strlen($_POST['
 
 
 
+        $stmtt = $pdo->prepare("SELECT `addemploy`.*, `leave`.*\n"
 
+    . "FROM `addemploy` \n"
 
-    $sql = "UPDATE `leave_app` SET `leave_approval`=:la WHERE `email`=:em";
-$stmt = $pdo->prepare($sql);
+    . "	LEFT JOIN `leave` ON `leave`.`leave_id` = `addemploy`.`Employ_ID` WHERE `leave`.`leave_id` = :xyzb");
+		$stmtt->execute(array(":xyzb" => $_GET['id']));
+		$roww = $stmtt->fetch(PDO::FETCH_ASSOC);
+		if ( $roww === false ) {
+			$_SESSION['error'] = 'Bad value for user_id';
+			header( 'Location: leavem.php' ) ;
+			return;
+		}
+		$sllpl = htmlentities($roww['reqleave']);
+			$scl = htmlentities($roww['casualleave']);
+            $addscl = $sllpl + $scl;
+            $ssl = htmlentities($roww['sickleave']);
+            $addssl = $sllpl + $ssl;
+            $sel = htmlentities($roww['earnleave']);
+            $addsel = $sllpl + $sel;			
+        if($roww['leavetype'] == 'casualleave'){		
+		if($addscl > 15)
+		{
+			$addscl = $roww['paidleave'] + $addscl- 15;
+            $sql = "UPDATE `leave` SET `casualleave` = 15, `paidleave` = :cl, `leaveapproval` = :lr WHERE `leave`.`leave_id` = :xyza";
+    $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
-        ':la' => $_POST['leave_approval'],
-        ':em' => $_POST['email'])
-        );
-    $_SESSION['success'] = 'Record Updated!!';
+        ':cl' =>  $addscl,
+        ':lr' => 'Accepted',
+		':xyza' => $_GET['id']
+      ));			
+		}
+		else if($addscl < 15){
+	  $sql = "UPDATE `leave` SET `casualleave` = :cl, `leaveapproval` = :lr WHERE `leave`.`leave_id` = :xyza";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':cl' =>  $addscl,
+        ':lr' => 'Accepted',
+		':xyza' => $_GET['id']
+      ));
+    $_SESSION['success'] = 'Leave submitted !!';
     header( 'Location: leavem.php' ) ;
     return;
+  }			
+ }
+ if($roww['leavetype'] == 'sickleave'){		
+		if($addssl > 15)
+		{
+			$addssl = $roww['paidleave'] + $addssl- 15;
+            $sql = "UPDATE `leave` SET `sickleave` = 15, `paidleave` = :cl, `leaveapproval` = :lr WHERE `leave`.`leave_id` = :xyza";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':cl' =>  $addssl,
+        ':lr' => 'Accepted',
+		':xyza' => $_GET['id']
+      ));
+$_SESSION['success'] = 'Leave submitted !!';
+    header( 'Location: leavem.php' ) ;
+    return;	  
+		}
+		else if($addssl < 15){
+	  $sql = "UPDATE `leave` SET `sickleave` = :cl, `leaveapproval` = :lr WHERE `leave`.`leave_id` = :xyza";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':cl' =>  $addssl,
+        ':lr' => 'Accepted',
+		':xyza' => $_GET['id']
+      ));
+    $_SESSION['success'] = 'Leave submitted !!';
+    header( 'Location: leavem.php' ) ;
+    return;
+  }			
+ }
+ if($roww['leavetype'] == 'earnleave'){		
+		if($addsel > 15)
+		{
+			$addsel = $roww['paidleave'] + $addsel- 15;
+            $sql = "UPDATE `leave` SET `earnleave` = 15, `paidleave` = :cl, `leaveapproval` = :lr WHERE `leave`.`leave_id` = :xyza";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':cl' =>  $addsel,
+        ':lr' => 'Accepted',
+		':xyza' => $_GET['id']
+      ));			
+		}
+		else if($addsel < 15){
+	  $sql = "UPDATE `leave` SET `earnleave` = :cl, `leaveapproval` = :lr WHERE `leave`.`leave_id` = :xyza";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':cl' =>  $addsel,
+        ':lr' => 'Accepted',
+		':xyza' => $_GET['id']
+      ));
+    $_SESSION['success'] = 'Leave submitted !!';
+    header( 'Location: leavem.php' ) ;
+    return;
+  }			
+ }
 }
 
+
 // Guardian: Make sure that user_id is present
-if ( ! isset($_GET['email']) ) {
+if ( ! isset($_GET['id']) ) {
   $_SESSION['error'] = "Missing user_id";
   header('Location: leavem.php');
   return;
 }
 
-$stmt = $pdo->prepare("SELECT * FROM `leave_app` WHERE `email`=:xyz");
-$stmt->execute(array(":xyz" => $_GET['email']));
+$stmt = $pdo->prepare("SELECT `addemploy`.*, `leave`.*\n"
+
+    . "FROM `addemploy` \n"
+
+    . "	LEFT JOIN `leave` ON `leave`.`leave_id` = `addemploy`.`Employ_ID` WHERE `leave`.`leave_id`=:xyz");
+$stmt->execute(array(":xyz" => $_GET['id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if ( $row === false ) {
     $_SESSION['error'] = 'Bad value for user_id';
@@ -60,10 +151,15 @@ if ( isset($_SESSION['error']) ) {
     unset($_SESSION['error']);
 }
 
-$la = htmlentities($row['leave_approval']);
-$n = htmlentities($row['name']);
-$ld = htmlentities($row['leave_days']);
-$lr = htmlentities($row['leave_reason']);
+$la = htmlentities($row['leaveapproval']);
+$n = htmlentities($row['fname']);
+$sl = htmlentities($row['sickleave']);
+$cl = htmlentities($row['casualleave']);
+$pl = htmlentities($row['paidleave']);
+$el = htmlentities($row['earnleave']);
+$ld = htmlentities($row['reqleave']);
+$lr = htmlentities($row['leavereason']);
+$ty = htmlentities($row['leavetype']);
 $e = htmlentities($row['email']);
 ?>
 <!doctype html>
@@ -86,19 +182,34 @@ $e = htmlentities($row['email']);
       <div class="email">
         <label for="email">Email ID:<span class="required">*</span></label><input type="email" name="email" value="<?= $e ?>" readonly ><br>
       </div>
+	  <div class="l_d" style="display: inline;">
+        <label for="leave_days">Sick leave :<span>*</span></label><input type="number" name="sickleave" value="<?= $sl ?>" readonly>
+      </div>
+		<div class="l_d" style="display: inline;">
+        <label for="leave_days">Earned leave :<span>*</span></label><input type="number" name="earnleave" value="<?= $el ?>" readonly>
+      </div>
+			<div class="l_d" style="display: inline;">
+        <label for="leave_days">Casual leave :<span>*</span></label><input type="number" name="casualleave" value="<?= $cl ?>" readonly>
+      </div>
+			<div class="l_d" style="display: inline;">
+        <label for="leave_days">Paid leave :<span>*</span></label><input type="number" name="paidleave" value="<?= $pl ?>" readonly>
+      </div>
       <div class="l_d">
-        <label for="leave_days">Number of days for leave :<span class="required">*</span></label><input type="number" name="leave_days" value="<?= $ld ?>" readonly ><br>
+        <label for="leave_days">Number of days for leave :<span class="required">*</span></label><input type="textarea" name="leave_type" value="<?= $ld ?>" readonly ><br>
+      </div>
+	  <div class="l_d">
+        <label for="leave_type">Typeof leave :<span>*</span></label><input type="text" name="leave_days" value="<?= $ty ?>" readonly><br>
       </div>
       <div class="reason">
-        <label for "leave_reason">Reason for leave(including date):<span class="required">*</span></label><textarea  name="leave_reason"value="<?= $lr ?>" readonly></textarea><br>
+        <label for "leave_reason">Reason for leave(including date):<span class="required">*</span></label><textarea name="leavereason" readonly><?= $lr ?></textarea><br>
       </div>
       <div class="approve">
         <label for="leave_approval">Leave Approval:<span class="required">*</span></label><input type="text" name="leave_approval" value="<?= $la ?>"><br>
       </div>
       <br><br><br>
       <div class="bn">
-        <button  class="btn btn-secondary" >Submit for approval</button>
-  			<button type="submit" name="submit" class="btn btn-secondary" >Cancel</button>
+        <button  type="submit" name="submit" class="btn btn-secondary" >Accept</button>
+  			<button name="cancel" class="btn btn-secondary">Reject</button>
       </div>
   	</form>
   </div>
