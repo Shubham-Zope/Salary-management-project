@@ -23,7 +23,7 @@ if (strlen($_POST['sickleave']) < 1 || strlen($_POST['casualleave']) < 1 || strl
         return;
     }
   if($_POST['leavet'] === 'sickleave'){
-	$sql = "UPDATE `leave` SET `reqleave` = :sl,`leavetype` = :ty, `leavereason` = :lr, `leaveapproval`=:la WHERE `leave`.`leave_id` = :xyza";
+	$sql = "UPDATE `leavez` SET `reqleave` = :sl,`leavetype` = :ty, `leavereason` = :lr, `leaveapproval`=:la WHERE `leavez`.`addemploy_Employ_ID` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':sl' =>  $_POST['levea'],
@@ -37,7 +37,7 @@ if (strlen($_POST['sickleave']) < 1 || strlen($_POST['casualleave']) < 1 || strl
     return;
   }
   if($_POST['leavet'] === 'earnleave'){
-	  $sql = "UPDATE `leave` SET `reqleave` = :el,`leavetype` = :ty, `leaveapproval`=:la, `leavereason` = :lr WHERE `leave`.`leave_id` = :xyza";
+	  $sql = "UPDATE `leavez` SET `reqleave` = :el,`leavetype` = :ty, `leaveapproval`=:la, `leavereason` = :lr WHERE `leavez`.`addemploy_Employ_ID` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':el' => $slle + $_POST['levea'],
@@ -51,7 +51,7 @@ if (strlen($_POST['sickleave']) < 1 || strlen($_POST['casualleave']) < 1 || strl
     return;
   }
   if($_POST['leavet'] === 'casualleave'){
-	  $sql = "UPDATE `leave` SET `reqleave` = :cl,`leavetype` = :ty, `leaveapproval`=:la, `leavereason` = :lr WHERE `leave`.`leave_id` = :xyza";
+	  $sql = "UPDATE `leavez` SET `reqleave` = :cl,`leavetype` = :ty, `leaveapproval`=:la, `leavereason` = :lr WHERE `leavez`.`addemploy_Employ_ID` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':cl' => $_POST['levea'],
@@ -71,11 +71,11 @@ if ( isset($_SESSION['error']) ) {
     echo '<p style="color:red">'.$_SESSION['error']."</p>\n";
     unset($_SESSION['error']);
 }
-$stmt = $pdo->prepare("SELECT `addemploy`.*, `leave`.*\n"
+$stmt = $pdo->prepare("SELECT `addemploy`.*, `leavez`.*\n"
 
     . "FROM `addemploy` \n"
 
-    . "	LEFT JOIN `leave` ON `leave`.`leave_id` = `addemploy`.`Employ_ID` WHERE `leave`.`leave_id` = :xyz");
+    . "	LEFT JOIN `leavez` ON `leavez`.`addemploy_Employ_ID` = `addemploy`.`Employ_ID` WHERE `leavez`.`addemploy_Employ_ID` = :xyz");
 $stmt->execute(array(":xyz" => $_SESSION['user_id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if ( $row === false ) {

@@ -69,8 +69,6 @@ while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
     echo("</td><td>");
     echo('<a href="salary.php?Employ_ID='.$row['Employ_ID'].'">Update Salary</a>  ');
     echo("</td><td>");
-    echo('<a href="showattendance.php?Employ_ID='.$row['Employ_ID'].'">Update Attendance</a>  ');
-    echo("</td><td>");
     echo('<a href="empdeletetest.php?Employ_ID='.$row['Employ_ID'].'">Delete</a>');
     echo("</td></tr>\n");
 }

@@ -25,16 +25,16 @@ if (strlen($_POST['name']) < 1 || strlen($_POST['email']) < 1 || strlen($_POST['
 
 
 
-        $stmtt = $pdo->prepare("SELECT `addemploy`.*, `leave`.*\n"
+        $stmtt = $pdo->prepare("SELECT `addemploy`.*, `leavez`.*\n"
 
     . "FROM `addemploy` \n"
 
-    . "	LEFT JOIN `leave` ON `leave`.`leave_id` = `addemploy`.`Employ_ID` WHERE `leave`.`leave_id` = :xyzb");
+    . "	LEFT JOIN `leavez` ON `leavez`.`addemploy_Employ_ID` = `addemploy`.`Employ_ID` WHERE `leavez`.`addemploy_Employ_ID` = :xyzb");
 		$stmtt->execute(array(":xyzb" => $_GET['id']));
 		$roww = $stmtt->fetch(PDO::FETCH_ASSOC);
 		if ( $roww === false ) {
 			$_SESSION['error'] = 'Bad value for user_id';
-			header( 'Location: leavem.php' ) ;
+			header( 'Location: leavem1.php' ) ;
 			return;
 		}
 		$sllpl = htmlentities($roww['reqleave']);
@@ -48,7 +48,7 @@ if (strlen($_POST['name']) < 1 || strlen($_POST['email']) < 1 || strlen($_POST['
 		if($addscl > 15)
 		{
 			$addscl = $roww['paidleave'] + $addscl- 15;
-            $sql = "UPDATE `leave` SET `casualleave` = 15, `paidleave` = :cl, `leaveapproval` = :lr WHERE `leave`.`leave_id` = :xyza";
+            $sql = "UPDATE `leavez` SET `casualleave` = 15, `paidleave` = :cl, `leaveapproval` = :lr WHERE `leavez`.`addemploy_Employ_ID` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':cl' =>  $addscl,
@@ -57,7 +57,7 @@ if (strlen($_POST['name']) < 1 || strlen($_POST['email']) < 1 || strlen($_POST['
       ));			
 		}
 		else if($addscl < 15){
-	  $sql = "UPDATE `leave` SET `casualleave` = :cl, `leaveapproval` = :lr WHERE `leave`.`leave_id` = :xyza";
+	  $sql = "UPDATE `leavez` SET `casualleave` = :cl, `leaveapproval` = :lr WHERE `leavez`.`addemploy_Employ_ID` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':cl' =>  $addscl,
@@ -73,7 +73,7 @@ if (strlen($_POST['name']) < 1 || strlen($_POST['email']) < 1 || strlen($_POST['
 		if($addssl > 15)
 		{
 			$addssl = $roww['paidleave'] + $addssl- 15;
-            $sql = "UPDATE `leave` SET `sickleave` = 15, `paidleave` = :cl, `leaveapproval` = :lr WHERE `leave`.`leave_id` = :xyza";
+            $sql = "UPDATE `leavez` SET `sickleave` = 15, `paidleave` = :cl, `leaveapproval` = :lr WHERE `leavez`.`addemploy_Employ_ID` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':cl' =>  $addssl,
@@ -85,7 +85,7 @@ $_SESSION['success'] = 'Leave submitted !!';
     return;	  
 		}
 		else if($addssl < 15){
-	  $sql = "UPDATE `leave` SET `sickleave` = :cl, `leaveapproval` = :lr WHERE `leave`.`leave_id` = :xyza";
+	  $sql = "UPDATE `leavez` SET `sickleave` = :cl, `leaveapproval` = :lr WHERE `leavez`.`addemploy_Employ_ID` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':cl' =>  $addssl,
@@ -101,7 +101,7 @@ $_SESSION['success'] = 'Leave submitted !!';
 		if($addsel > 15)
 		{
 			$addsel = $roww['paidleave'] + $addsel- 15;
-            $sql = "UPDATE `leave` SET `earnleave` = 15, `paidleave` = :cl, `leaveapproval` = :lr WHERE `leave`.`leave_id` = :xyza";
+            $sql = "UPDATE `leavez` SET `earnleave` = 15, `paidleave` = :cl, `leaveapproval` = :lr WHERE `leavez`.`addemploy_Employ_ID` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':cl' =>  $addsel,
@@ -110,7 +110,7 @@ $_SESSION['success'] = 'Leave submitted !!';
       ));			
 		}
 		else if($addsel < 15){
-	  $sql = "UPDATE `leave` SET `earnleave` = :cl, `leaveapproval` = :lr WHERE `leave`.`leave_id` = :xyza";
+	  $sql = "UPDATE `leavez` SET `earnleave` = :cl, `leaveapproval` = :lr WHERE `leavez`.`addemploy_Employ_ID` = :xyza";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':cl' =>  $addsel,
@@ -132,11 +132,11 @@ if ( ! isset($_GET['id']) ) {
   return;
 }
 
-$stmt = $pdo->prepare("SELECT `addemploy`.*, `leave`.*\n"
+$stmt = $pdo->prepare("SELECT `addemploy`.*, `leavez`.*\n"
 
     . "FROM `addemploy` \n"
 
-    . "	LEFT JOIN `leave` ON `leave`.`leave_id` = `addemploy`.`Employ_ID` WHERE `leave`.`leave_id`=:xyz");
+    . "	LEFT JOIN `leavez` ON `leavez`.`addemploy_Employ_ID` = `addemploy`.`Employ_ID` WHERE `leavez`.`addemploy_Employ_ID`=:xyz");
 $stmt->execute(array(":xyz" => $_GET['id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if ( $row === false ) {

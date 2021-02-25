@@ -52,13 +52,13 @@ if ( isset($_SESSION['success']) ) {
     <br><br><br>
     <div class="container">
       <?php  echo('<table class="table table-hover">'."\n");
-    $stmt = $pdo->query("SELECT `addemploy`.*, `leave`.*\n"
+    $stmt = $pdo->query("SELECT `addemploy`.*, `leavez`.*\n"
 
     . "FROM `addemploy` \n"
 
-    . "	LEFT JOIN `leave` ON `leave`.`leave_id` = `addemploy`.`Employ_ID`\n"
+    . "	LEFT JOIN `leavez` ON `leavez`.`addemploy_Employ_ID` = `addemploy`.`Employ_ID`\n"
 
-    . "WHERE `leave`.`reqleave` IS NOT NULL");
+    . "WHERE `leavez`.`reqleave` IS NOT NULL");
     while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
 
         echo "<tr><td><li>";

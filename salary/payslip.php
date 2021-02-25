@@ -129,7 +129,7 @@ $name=$fn.' '.$mn.' '.$ln;
 				<th>Leave Taken:</th>
 				<td><?= $lt ?></td>
 				<th>Leave Deductions:</th>
-				<td><?= $sa ?></td>
+				<td><?= $ld ?></td>
 			</tr>
 			<tr>
 				<th>Net Salary:</th>

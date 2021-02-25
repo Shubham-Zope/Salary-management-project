@@ -119,7 +119,7 @@ $employ = $row['Employ_ID'];
   		 <br>
   		 <div class="address">
          <label for "m">Main Role: <span class="required">*</span></label><input type="text" name="m" value="<?= $ma ?>">
-  			 <label for "address">Permanent Address:</label><textarea class="addr" name="addr" value="<?= $a ?>"></textarea><br>
+  			 <label for "address">Permanent Address:</label><textarea class="addr" name="addr"><?= $a ?></textarea><br>
 
   		 </div>
   			<br>
