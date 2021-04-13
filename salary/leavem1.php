@@ -179,37 +179,50 @@ $e = htmlentities($row['email']);
       <div class="name">
         <label for="name">Name:<span class="required">*</span></label><input type="text" name="name" value="<?= $n ?>" readonly ><br>
       </div>
+      <br>
       <div class="email">
         <label for="email">Email ID:<span class="required">*</span></label><input type="email" name="email" value="<?= $e ?>" readonly ><br>
       </div>
+      <br>
 	  <div class="l_d" style="display: inline;">
-        <label for="leave_days">Sick leave :<span>*</span></label><input type="number" name="sickleave" value="<?= $sl ?>" readonly>
+        <label for="leave_days" style="width: 120px; margin-left: 20px;">Sick leave :<span>*</span></label><input type="number" name="sickleave" value="<?= 15-$sl ?>" readonly>
       </div>
 		<div class="l_d" style="display: inline;">
-        <label for="leave_days">Earned leave :<span>*</span></label><input type="number" name="earnleave" value="<?= $el ?>" readonly>
+        <label for="leave_days" style="width: 120px; margin-left: 20px;">Earned leave :<span>*</span></label><input type="number" name="earnleave" value="<?= 15-$el ?>" readonly>
       </div>
 			<div class="l_d" style="display: inline;">
-        <label for="leave_days">Casual leave :<span>*</span></label><input type="number" name="casualleave" value="<?= $cl ?>" readonly>
+        <label for="leave_days" style="width: 120px; margin-left: 20px;">Casual leave :<span>*</span></label><input type="number" name="casualleave" value="<?= 15-$cl ?>" readonly>
       </div>
 			<div class="l_d" style="display: inline;">
-        <label for="leave_days">Paid leave :<span>*</span></label><input type="number" name="paidleave" value="<?= $pl ?>" readonly>
+        <label for="leave_days" style="width: 120px; margin-left: 20px;">Paid leave :<span>*</span></label><input type="number" name="paidleave" value="<?= $pl ?>" readonly>
       </div>
+      <br>
+      <br>
+      <br>
       <div class="l_d">
-        <label for="leave_days">Number of days for leave :<span class="required">*</span></label><input type="textarea" name="leave_type" value="<?= $ld ?>" readonly ><br>
+        <label for="leave_days" style="width: 250px; margin-left: 20px;">Number of days for leave :<span class="required">*</span></label><input type="textarea" name="leave_type" value="<?= $ld ?>" style="margin-left: 80px;" readonly ><br>
       </div>
+      <br>
+      <br>
 	  <div class="l_d">
-        <label for="leave_type">Typeof leave :<span>*</span></label><input type="text" name="leave_days" value="<?= $ty ?>" readonly><br>
+        <label for="leave_type" style="width: 150px; margin-left: 20px;">Type of leave :<span>*</span></label><input type="text" name="leave_days" value="<?= $ty ?>" style="margin-left: 180px;" readonly><br>
       </div>
+      <br>
+      <br>
       <div class="reason">
-        <label for "leave_reason">Reason for leave(including date):<span class="required">*</span></label><textarea name="leavereason" readonly><?= $lr ?></textarea><br>
+        <label for="leave_reason"  style="width: 300px; margin-left: 10px;">Reason for leave(including date):<span class="required">*</span></label><textarea name="leavereason" style="margin-left: 40px;" readonly><?= $lr ?></textarea><br>
       </div>
+      <br>
+      <br>
       <div class="approve">
-        <label for="leave_approval">Leave Approval:<span class="required">*</span></label><input type="text" name="leave_approval" value="<?= $la ?>"><br>
+        <label for="leave_approval"  style="width: 200px; margin-left: 10px;">Leave Approval:<span class="required">*</span></label><input type="text" name="leave_approval" value="<?= $la ?>"><br>
       </div>
       <br><br><br>
-      <div class="bn">
-        <button  type="submit" name="submit" class="btn btn-secondary" >Accept</button>
-  			<button name="cancel" class="btn btn-secondary">Reject</button>
+      <div class="leavebtn">
+      <button type="submit" class="submit" style="border-radius: 10px; margin-right: 15px; background-color: green; color: white;">Accept</button>
+  </div>
+  <div class="cancelleave">
+      <button  name="submit" class="cancel" style="border-radius: 10px; background-color: red; color: white;">Cancel</button>
       </div>
   	</form>
   </div>

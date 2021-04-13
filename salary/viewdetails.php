@@ -61,11 +61,12 @@ $employ = $row['Employ_ID'];
     		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     		<a href="viewdetails.php">View employ</a>
     		<a href="leave.php">Leave Application</a>
+        <a href="leaveremain.php">Leave details</a>
         <a href="logout.php">Logout</a>
     </div>
     <div class="side">
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
-    <div>
+         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+    </div>
 
     <script>
     function openNav() {

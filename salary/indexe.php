@@ -89,6 +89,6 @@ if (isset($_SESSION['error'])) {
 		</form>
 			</fieldset>
 	</div>
-	<footer>Created by <a href="https://vesit.ves.ac.in/">VESIT</a></footer>
+	<footer style="color: white;">Created by <a href="https://vesit.ves.ac.in/">VESIT</a></footer>
 </body>
 </html>

@@ -18,7 +18,8 @@ if (strlen($_POST['fname']) < 1 || strlen($_POST['lname']) < 1 || strlen($_POST[
         header("Location: edit.php?Employ_ID=".$_POST['Employ_ID']);
         return;
     }
-$p="1a52e17fa899cf40fb04cfc42e6352f1";
+    $str1 = "XyZzy12*_".$_POST['pwd'];
+    $p = md5($str1);
     $sql = "UPDATE `addemploy` SET `fname` = :fname,`mname`= :mname,`lname` = :lname,`qualify` = :qualify,`blood` = :blood,`email` = :email,`phone` = :phone, `exp` = :exp,`department` = :department,`designation` = :designation,`addr` = :addr,`MainRole` = :m,`Password` = :p  WHERE `Employ_ID` = :Employ_ID";
 $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
@@ -96,8 +97,9 @@ $employ = $row['Employ_ID'];
   		<fieldset>
   			<div class="name">
   				<label for="fname">First name:</label><input type="text" name="fname" placeholder="Your name" value="<?= $fn ?>">
-  				<label for="fname">Middle name(if any):</label><input type="text" name="mname" placeholder="Middle name " value="<?= $mn ?>">
-  				<label for="fname">Last name:</label><input type="text" name="lname" placeholder="Surname" value="<?= $ln ?>"><br>
+  				<label for="lname">Middle name(if any):</label><input type="text" name="mname" placeholder="Middle name " value="<?= $mn ?>">
+  				<label for="mname">Last name:</label><input type="text" name="lname" placeholder="Surname" value="<?= $ln ?>"><br>
+          <label for="pwd">Edit password:</label><input type="password" name="pwd" placeholder="password" value="<?= $pa ?>"><br>
   			</div>
   			<fieldset id="personaldetails">
   				<div class="blood">
@@ -118,8 +120,8 @@ $employ = $row['Employ_ID'];
   			</div>
   		 <br>
   		 <div class="address">
-         <label for "m">Main Role: <span class="required">*</span></label><input type="text" name="m" value="<?= $ma ?>">
-  			 <label for "address">Permanent Address:</label><textarea class="addr" name="addr"><?= $a ?></textarea><br>
+         <label for="m">Main Role: <span class="required">*</span></label><input type="text" name="m" value="<?= $ma ?>">
+  			 <label for="address">Permanent Address:</label><textarea class="addr" name="addr"><?= $a ?></textarea><br>
 
   		 </div>
   			<br>

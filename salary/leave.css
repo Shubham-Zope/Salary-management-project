@@ -1,8 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-form{
 
-}
 .name label,span{
 	margin: 0.5%;
 	padding: 1%;
@@ -31,7 +29,7 @@ form{
 .l_d input{
 	width: 150px;
    margin-left: 0.5%;
-   margin-right: 50px;
+   margin-right: 6px;
 	padding: 1%;
 }
 .alreadytaken p{
@@ -101,7 +99,8 @@ body {
 .overall{
 	position:absolute;
   margin: 5%;
-  height: 140%;
+  height: auto;
+
   width: 90%;
   padding: 80px 40px;
   box-sizing: border-box;

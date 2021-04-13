@@ -75,7 +75,7 @@ $stmt = $pdo->prepare("SELECT `addemploy`.*, `leavez`.*\n"
 
     . "FROM `addemploy` \n"
 
-    . "	LEFT JOIN `leavez` ON `leavez`.`addemploy_Employ_ID` = `addemploy`.`Employ_ID` WHERE `leavez`.`addemploy_Employ_ID` = :xyz");
+    . "	LEFT JOIN `leavez` ON `leavez`.`addemploy_Employ_ID` = `addemploy`.`Employ_ID` WHERE `leavez`.`addemploy_Employ_ID` = :xyz;");
 $stmt->execute(array(":xyz" => $_SESSION['user_id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if ( $row === false ) {
@@ -110,6 +110,7 @@ $e = htmlentities($row['email']);
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		<a href="viewdetails.php">View employ</a>
 		<a href="leave.php">Leave Application</a>
+    <a href="leaveremain.php">Leave details</a>
 		<a href="logout.php">Logout</a>
 </div>
 <div class="side">
@@ -140,16 +141,17 @@ function closeNav() {
 	    <br>
 	  <div class="alreadytaken">
 	  <br><br>
+    <hr>
 	  <p>Leave already taken</p>
 	  <br>
       <div class="l_d" style="display: inline;">
-        <label for="leave_days">Sick leave :<span>*</span></label><input type="number" name="sickleave" value="<?= $sl ?>" readonly>
+        <label for="leave_days" style="width: 110px;">Sick leave :<span>*</span></label><input type="number" name="sickleave" value="<?= 15 - $sl ?>" readonly>
       </div>
 		<div class="l_d" style="display: inline;">
-        <label for="leave_days">Earned leave :<span>*</span></label><input type="number" name="earnleave" value="<?= $el ?>" readonly>
+        <label for="leave_days">Earned leave :<span>*</span></label><input type="number" name="earnleave" value="<?= 15 - $el ?>" readonly>
       </div>
 			<div class="l_d" style="display: inline;">
-        <label for="leave_days">Casual leave :<span>*</span></label><input type="number" name="casualleave" value="<?= $cl ?>" readonly>
+        <label for="leave_days">Casual leave :<span>*</span></label><input type="number" name="casualleave" value="<?= 15 - $cl ?>" readonly>
       </div>
 			<div class="l_d" style="display: inline;">
         <label for="leave_days">Paid leave :<span>*</span></label><input type="number" name="paidleave" value="<?= $pl ?>" readonly>
@@ -158,21 +160,23 @@ function closeNav() {
 		 </div>
        <div class="tobetaken">
 	  <br><br>
+    <hr>
 	  <p>Leave to be taken</p>
 	  <br>
       <div class="l_d" style="display: inline;">
-        <label for="leave_days">Sick leave :<span>*</span></label><input type="radio" name="leavet" value="sickleave">
+        <label for="leave_days" style="width: 120px;">Sick leave :<span>*</span></label><input type="radio" name="leavet" value="sickleave">
       </div>
 		<div class="l_d" style="display: inline;">
-        <label for="leave_days">Earned leave :<span>*</span></label><input type="radio" name="leavet" value="earnleave"">
+        <label for="leave_days" style="width: 120px;">Earned leave :<span>*</span></label><input type="radio" name="leavet" value="earnleave"">
       </div>
 			<div class="l_d" style="display: inline;">
-        <label for="leave_days">Casual leave :<span>*</span></label><input type="radio" name="leavet" value="casualleave">
+        <label for="leave_days" style="width: 120px;">Casual leave :<span>*</span></label><input type="radio" name="leavet" value="casualleave">
       </div>
 	  <br><br>
+    <hr>
 	  <div class="l_d">
-	  <label>Please enter your leaves*<span class="required"></span></label>
-	  <input type="number" name="levea">
+	  <label style="width: 220px;">Please enter your leaves: *<span class="required"></span></label>
+	  <input type="number" name="levea" style="margin-left: 90px;">
 	  </div>
 			<br><br><br>
 		 </div>			 
@@ -185,10 +189,10 @@ function closeNav() {
       </div>
 			<br><br><br>
 			<div class="leavebtn">
-			<button  class="submit" >Request leave</button>
+			<button type="submit" class="submit" style="border-radius: 10px; margin-right: 15px; background-color: green; color: white;">Request leave</button>
 			</div>
 			<div class="cancelleave">
-			<button type="submit" name="submit" class="cancel" >Cancel</button>
+			<button  name="submit" class="cancel" style="border-radius: 10px; background-color: red; color: white;">Cancel</button>
 			</div>
   	</form>
   </div>

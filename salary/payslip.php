@@ -27,6 +27,7 @@ $fdate=htmlentities($row['fromdate']);
 $tdate=htmlentities($row['todate']);
 $fn = htmlentities($row['fname']);
 $mn = htmlentities($row['mname']);
+$em = htmlentities($row['email']);
 $ln = htmlentities($row['lname']);
 $dp = htmlentities($row['department']);
 $ds = htmlentities($row['designation']);
@@ -144,6 +145,8 @@ $name=$fn.' '.$mn.' '.$ln;
       <button onClick="window.print()"  class="btn btn-secondary" >Print Details</button>
       <input type="button" VALUE="Back" class="btn btn-secondary" onClick="history.go(-1);">
     </div>
+<br><br><br>
+	<p style="text-decoration: underline;"><b><?php echo "<a href='mailto:" . $em . "?subject=Salary receipt'</a>"; ?>Click to Mail</b></p>
   </div>
 </form>
 </body>

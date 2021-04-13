@@ -59,25 +59,25 @@ $la = htmlentities($row['leaveapproval']);
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
-      <div id="mySidenav" class="sidenav">
-    		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    		<a href="viewdetails.php">View employ</a>
-    		<a href="leave.php">Leave Application</a>
-        <a href="logout.php">Logout</a>
-    </div>
-    <div class="side">
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
-    <div>
+    <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="viewdetails.php">View employ</a>
+    <a href="leave.php">Leave Application</a>
+	<a href="leaveremain.php">Leave Details</a>
+    <a href="logout.php">Logout</a>
+  </div>
+  <div class="side">
+       <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+  </div>
+  <script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "330px";
+  }
 
-    <script>
-    function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-    }
-
-    function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-    }
-    </script>
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  </script>
     <div class="heading">
       <center><h2>Employee leave Details</h2></center>
     </div>

@@ -246,10 +246,12 @@ function closeNav() {
   			 <label for "address">Permanent Address:<span class="required">*</span></label><textarea class="addr" name="addr" ></textarea><br>
   		 </div>
   			<br>
-        <div class="bn">
-          <button  class="submit" >Add Details</button>
-    			<button type="submit" name="cancel" class="cancel" >Cancel</button>
-        </div>
+			  <div class="leavebtn">
+      <button type="submit" class="submit" style="border-radius: 10px; margin-right: 15px; background-color: green; color: white;">Add details</button>
+  </div>
+  <div class="cancelleave">
+      <button  name="submit" class="cancel" style="border-radius: 10px; background-color: red; color: white;">Cancel</button>
+      </div>
   		</fieldset>
   	</form>
   </div>

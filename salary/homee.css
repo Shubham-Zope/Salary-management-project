@@ -1,5 +1,5 @@
 body{
-  background-image: url(bgImage7.jpg);
+  background-image: url(employ1.jpg);
   margin:0;
   padding:0;
   background-size: cover;
@@ -70,11 +70,13 @@ body {
 }
 .para{
   position:absolute;
+  display: inline-block;
   top:30%;
   left:30%;
   font-size: 17px;
-  height: 50%;
-  width: 50%;
+  height: auto;
+  width: auto;
+  margin-right: 20%;
   padding: 80px 40px;
   box-sizing: border-box;
   border-radius: 50px;

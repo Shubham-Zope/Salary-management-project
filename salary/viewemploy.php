@@ -36,12 +36,12 @@ if ( isset($_SESSION['success']) ) {
         <a href="leavem.php">Leave Requests</a>
         <a href="logout.php">Logout</a>
   </div>
-  <div class="side"
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
-  <div>
+  <div class="side">
+       <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+  </div>
   <script>
   function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("mySidenav").style.width = "325px";
   }
 
   function closeNav() {
@@ -54,6 +54,22 @@ if ( isset($_SESSION['success']) ) {
   <br><br><br>
   <div class="container">
   <?php  echo('<table class="table table-hover">'."\n");
+  echo "<tr><td>";
+  echo("<b>First Name</b>");
+  echo("</td><td>");
+  echo("<b>Surname</b>");
+  echo("</td><td>");
+  echo("<b>Email</b>");
+  echo("</td><td>");
+  echo("<b>Main role</b>");
+  echo("</td><td>");
+  echo('<b>Edit</b>');
+  echo("</td><td>");
+  echo('<b>Salary</b>');
+  echo("</td><td>");
+  echo('<b>Delete</b>');
+
+  echo("</td></tr>\n");
 $stmt = $pdo->query("SELECT fname,lname, email, Employ_ID,MainRole FROM addemploy");
 while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
     echo "<tr><td>";

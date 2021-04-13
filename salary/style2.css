@@ -1,8 +1,5 @@
 @charset "utf-8";
 /* CSS Document */
-form{
-
-}
 .name label,span{
 	margin: 1%;
 	padding: 1%;
@@ -142,16 +139,22 @@ body {
   font-size: 36px;
   margin-left: 30px;
 }
-.bn button{
-	background-color:
-}
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
 
 .bar{
-	margin-left: 2%;
+	
   margin-top: 1%;
   color: white;
+}
+.leavebtn button{
+	margin-left: 30%;
+	padding: 1%;
+	width: 15%;
+}
+.cancelleave button{
+	padding: 1%;
+	width: 15%;
 }

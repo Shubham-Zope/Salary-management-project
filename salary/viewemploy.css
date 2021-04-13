@@ -14,9 +14,33 @@ body {
   font-weight: bold;
 }
 
+
+
+.tab{
+  width: 100%;
+  background-color: #f1f1c1;
+}
+.tab tr:nth-child(even) {
+  background-color: #eee;
+}
+.tab tr:nth-child(odd) {
+  background-color: #fff;
+}
+.tab th {
+  color: white;
+  background-color: black;
+}
+.container{
+  background-color: white;
+}
+.view button{
+  background-color: blue;
+}
+
 .sidenav {
   height: 100%;
   width: 0;
+  text-decoration: none;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -51,30 +75,21 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-.tab{
-  width: 100%;
-  background-color: #f1f1c1;
-}
-.tab tr:nth-child(even) {
-  background-color: #eee;
-}
-.tab tr:nth-child(odd) {
-  background-color: #fff;
-}
-..tab th {
-  color: white;
-  background-color: black;
-}
-.container{
-  background-color: white;
-}
-.view button{
-  background-color: blue;
-}
+
 
 .bar{
     margin-left: 2%;
     margin-top: 1%;
     color: white;
     font-style: bold;
+}
+
+span{
+  color: white;
+}
+
+.side{
+  margin-left: 2%;
+  margin-top: 1%;
+  color: black;
 }

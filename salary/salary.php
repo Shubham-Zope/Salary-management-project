@@ -29,7 +29,9 @@ if (isset($submit)){
 $sqll="BEGIN;
 INSERT INTO `salary` (`b_salary`, `hra`, `lta`, `ca`, `da`, `md`, `sa`, `g_salary`, `epf`, `pt`, `it`, `lt`, `ld`, `n_salary`, `addemploy_Employ_ID`,`fromdate`,`todate`,`inc`) VALUES ('$b_salary', '$hra', '$lta', '$ca', '$da', '$md', '$sa', '$g_salary', '$epf', '$pt', '$it', '$lt', '$ld', '$n_salary', '$id','$fdate','$tdate','$inc');
 UPDATE `leavez` SET `paidleave` = :pl WHERE `leavez`.`addemploy_Employ_ID` = :xyza;
+
 COMMIT;";
+
 
 $stmt = $pdo->prepare($sqll);
 
