@@ -24,15 +24,28 @@ p{
   box-shadow: 2px 3px 25px 14px #000000;
 }
 .del input{
-	margin:10%;
+	margin-left: 30%;
 	padding: 3%;
 	border-radius: 10px;
 }
 .del a{
-	margin: 10%;
+	margin-right: 10%;
 	padding: 3.5%;
 	border-radius: 10px;
 }
+.leavebtn input{
+	margin-left: 30%;
+	padding: 1%;
+	width: 15%;
+}
+.cancelleave a{
+	padding: 1%;
+	width: 15%;
+}
 .btn-secondary{
 	background: green;
+}
+
+.overall:hover{
+  background-color: rgba(255, 255, 255, 0.48);
 }

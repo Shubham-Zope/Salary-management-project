@@ -49,7 +49,7 @@ if ( isset($_SESSION['success']) ) {
   }
   </script>
   <div class="heading">
-    <center><h2>Employee Details</h2></center>
+    <button class="head" style="background-color: white; border-radius: 20px; margin-left: 410px; width: 700px;"><center><h2>Employee Details</h2></center>
   </div>
   <br><br><br>
   <div class="container">

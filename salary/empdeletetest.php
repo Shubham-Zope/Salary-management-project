@@ -39,14 +39,14 @@ if ( $row === false ) {
 	<link href="delete.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
 </head>
 <div class="overall">
-<p>Confirm: Deleting <?= htmlentities($row['fname']) ?></p>
+<center><p>Confirm: Deleting <?= htmlentities($row['fname']) ?></p></center>
 <br>
 <br>
 <form method="post">
 <input type="hidden" name="Employ_ID" value="<?= $row['Employ_ID'] ?>">
 <div class="del">
-<input type="submit" class="btn-secondary" value="Delete" name="delete">
-<a class="btn-secondary" href="viewemploy.php">Cancel</a>
+<input type="submit" class="btn-secondary" value="Delete" name="delete" style="border-radius: 10px; margin-right: 15px; background-color: green; color: white;">
+<a class="btn-secondary" href="viewemploy.php" style="border-radius: 10px; background-color: red; color: white;">Cancel</a>
 </div>
 </div>
 </form>

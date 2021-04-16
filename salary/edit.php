@@ -109,7 +109,7 @@ $employ = $row['Employ_ID'];
   			</fieldset>
   			<div class="details">
   				<label for="email">Email ID:</label><input type="email" name="email" value="<?= $em ?>" ><br>
-  				<label for="phone">Phone number:</label><input type="tel" name="phone" value="<?= $ph ?>"><br>
+  				<label for="phone" style="width: 150px;">Phone number:</label><input type="tel" name="phone" value="<?= $ph ?>"><br>
   				<label for="exp">Experience:</label><input type="text" name="exp" value="<?= $ex ?>"><br>
   			</div>
   			<div class="department">
@@ -120,15 +120,19 @@ $employ = $row['Employ_ID'];
   			</div>
   		 <br>
   		 <div class="address">
-         <label for="m">Main Role: <span class="required">*</span></label><input type="text" name="m" value="<?= $ma ?>">
+         <label for="m" style="width: 130px;">Main Role: <span class="required">*</span></label><input type="text" name="m" value="<?= $ma ?>">
   			 <label for="address">Permanent Address:</label><textarea class="addr" name="addr"><?= $a ?></textarea><br>
 
   		 </div>
   			<br>
         <input type="hidden" name="Password" value="<?= $pa ?>">
         <input type="hidden" name="Employ_ID" value="<?= $employ ?>">
-  			<button class="submit" >Update Details</button>
-  			<button type="submit" formaction="viewemploy.php" class="cancel" >Cancel</button>
+  			<div class="leavebtn">
+      <button type="submit" class="submit" style="border-radius: 10px; margin-right: 15px; background-color: green; color: white;">Update details</button>
+  </div>
+  <div class="cancelleave">
+      <button  name="submit" class="cancel" style="border-radius: 10px; background-color: red; color: white;">Cancel</button>
+      </div>
   		</fieldset>
   	</form>
   </div>

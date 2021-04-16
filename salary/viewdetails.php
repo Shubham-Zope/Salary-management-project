@@ -10,6 +10,22 @@ if (isset($_POST['pay'])){
   header("Location: paySlip.php?Employ_ID=$url");
   return;
 }
+
+
+if(isset($_POST['confirm']) && (strlen($_POST['pwd'])>1)){
+	 $str1 = "XyZzy12*_".$_POST['pwd'];
+    $p = md5($str1);
+    $sql = "UPDATE `addemploy` set `Password` = :p  WHERE `Employ_ID` = :Employ_ID";
+$stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':p' => $p,
+      ':Employ_ID' => $_SESSION['user_id']));
+    $_SESSION['success'] = 'Password Updated!!';
+    header( 'Location: viewdetails.php' ) ;
+    return;
+}
+
+
 if ( isset($_SESSION['error']) ) {
     echo '<p style="color:red">'.$_SESSION['error']."</p>\n";
     unset($_SESSION['error']);
@@ -77,11 +93,57 @@ $employ = $row['Employ_ID'];
       document.getElementById("mySidenav").style.width = "0";
     }
     </script>
+	<style>
+body {margin: 0;}
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-bottom: 50px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li a.active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+</style>
+</head>
+<body>
+
+<ul class="topnav">
+  <li><a class="active" href="#det">Home</a></li>
+  <li><a href="#view">View payslip</a></li>
+  <li><a href="#pass">Edit password</a></li>
+</ul>
     <div class="heading">
-      <center><h2>Employee Details</h2></center>
+      <button class="head" style="background-color: white; border-radius: 20px; margin-left: 410px; width: 700px;"><center><h2>Employee Details</h2></center>
     </div>
     <br><br><br>
     <div class="container">
+	<section id="det" style="background-color: #feffde">
       <table class="table table-hover" style="width:100%">
         <tr>
           <th>First name:</th>
@@ -132,9 +194,28 @@ $employ = $row['Employ_ID'];
 
     </table>
   </table>
-  <div class="view">
-    <form method="post" ><button type="submit"  class="btn btn-secondary" name="pay" >View Payslip</button></form>
-  </div>
+  </section>
+  
+  <hr>
+  <section id="pass" style="background-color: #ddffbc">
+  <br>
+  <br>
+  <form method="post">
+  <label for="pass" style="margin-left: 30px;"><b>Edit password: </b></label><input type="password" name="pwd" style="margin-left: 10px;"></input>
+  <br>
+  <br>
+  <button type="submit"  class="btn btn-primary" name="confirm" style="margin-left: 30px;">Confirm</button>
+  </form>
+  <br>
+  <br>
+   <br>
+  </section>
+  <hr>
+  <section id="view" style="background-color: #feffde">
+  <br><br><div class="view">
+    <form method="post" ><button type="submit"  class="btn btn-secondary" name="pay" style="margin-left: 30px;">View Payslip</button></form>
+  </div><br><br>
+  </section>
   </div>
 
     </body>

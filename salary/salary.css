@@ -102,7 +102,7 @@ body {
 .overall{
 	position:absolute;
   margin: 5%;
-  height: 200%;
+  height: 190%;
   width: 90%;
   padding: 80px 40px;
   box-sizing: border-box;
@@ -154,4 +154,14 @@ body {
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+.leavebtn button{
+	margin-left: 30%;
+	padding: 1%;
+	width: 15%;
+}
+.cancelleave button{
+	padding: 1%;
+	width: 15%;
 }

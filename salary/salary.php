@@ -160,8 +160,12 @@ $exp = htmlentities($row['exp']);
 				</div>
 			</fieldset>
 			<br><br>
-			<button  type="submit" name="submit" >Confirm</button>
-				<button name="cancel" class="cancel" >Cancel</button>
+			<div class="leavebtn">
+      <button type="submit" class="submit" style="border-radius: 10px; margin-right: 15px; background-color: green; color: white;">Confirm</button>
+  </div>
+  <div class="cancelleave">
+      <button  name="submit" class="cancel" style="border-radius: 10px; background-color: red; color: white;">Cancel</button>
+      </div>
 			</fliedset>
 		</form>
 	</div>
